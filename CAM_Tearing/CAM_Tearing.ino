@@ -38,12 +38,11 @@ void loop() {
   Sipeed_OV2640_sensor_snapshot();
 
   uint8_t* raw_data = (uint8_t*)framebuffer;
-for (int i = 0; i < WIDTH * HEIGHT * 2 - 1; i++) {
-    // Čteme o 1 bajt vedle – to rozhodí složky RGB
-    raw_data[i] = raw_data[i + 1]; 
-}
 
-    
+  for (int i = 0; i < WIDTH * HEIGHT * 2 - 1; i++) {
+    raw_data[i] = raw_data[i + 1]; 
+  }
+
   lcd_draw_picture(0, 0, WIDTH, HEIGHT, framebuffer);
 
 }
